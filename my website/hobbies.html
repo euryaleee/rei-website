@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hobbies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <ul class="nav-left">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="hobbies.html" class="active">Hobbies</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hobbies">
+  <div class="hobbies-carousel">
+    <img src="hobby1.jpg" class="slide active" alt="Playing Instruments">
+    <img src="hobby2.jpg" class="slide" alt="Badminton">
+    <img src="hobby3.jpg" class="slide" alt="Billiards">
+  </div>
+</section>
+
+<section style="text-align:center; margin-top:20px;">
+  <h2 id="caption">Playing Instruments</h2>
+</section>
+
+<script>
+const hobbySlides = document.querySelectorAll(".hobbies-carousel .slide");
+const hobbyCaptions = ["Playing Instruments", "Playing Badminton", "Playing Billiards"];
+let hobbyIndex = 0;
+
+setInterval(() => {
+  hobbySlides.forEach(slide => slide.classList.remove("active"));
+  hobbySlides[hobbyIndex].classList.add("active");
+  
+  document.getElementById("caption").innerText = hobbyCaptions[hobbyIndex];
+  
+  hobbyIndex = (hobbyIndex + 1) % hobbySlides.length;
+}, 3500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <ul class="nav-left">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="hobbies.html">Hobbies</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="contact-section">
+  <a href="https://www.facebook.com/share/1BsEHP1jhG/?mibextid=wwXIfr" target="_blank">
+    <img src="facebook.png" alt="Facebook"> Facebook
+  </a>
+  <a href="https://www.instagram.com/rireireiri_?igsh=bjBrMTJmbnMzczRo&utm_source=qr" target="_blank">
+    <img src="instagram.png" alt="Instagram"> Instagram
+  </a>
+  <button class="call-btn">
+    <img src="call.png" alt="Call"> Call Me
+  </button>
+</section>
+
+<div class="popup" id="callPopup">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+    <h3>Call Me</h3>
+    <p id="phoneNumber">(0968) 610 2778</p>
+    <button id="copyBtn">Copy Number</button>
+    <span id="copyMsg" style="display:none; color: green; margin-left:10px;">Copied!</span>
+  </div>
+</div>
+
+<script>
+  // Get elements
+  const callBtn = document.querySelector('.call-btn');
+  const popup = document.getElementById('callPopup');
+  const closeBtn = document.querySelector('.close-btn');
+  const copyBtn = document.getElementById('copyBtn');
+  const phoneNumber = document.getElementById('phoneNumber');
+  const copyMsg = document.getElementById('copyMsg');
+
+  // Show popup on button click
+  callBtn.addEventListener('click', () => {
+    popup.style.display = 'flex';
+  });
+
+  // Close popup
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  // Click outside popup to close
+  window.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+  // Copy number to clipboard
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(phoneNumber.textContent);
+    copyMsg.style.display = 'inline';
+    setTimeout(() => copyMsg.style.display = 'none', 2000);
+  });
+</script>
+
+</body>
+</html>
